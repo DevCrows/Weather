@@ -41,7 +41,7 @@ let API_KEY: String = "02735b3ab7109f96e982d9a42ae2a22e"
 
 class Api{
     func getWeather(completion: @escaping (Forecast)->()){
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=Bangkok&appid=" + API_KEY) else { return }
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=Moscow&appid=" + API_KEY) else { return }
         URLSession.shared.dataTask(with: url){ (data, _, _) in
             let forecast = try! JSONDecoder().decode(Forecast.self, from: data!)
             DispatchQueue.main.async {

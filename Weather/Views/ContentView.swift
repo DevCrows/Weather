@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
-
+    
     @State var temp: String = ""
     @State var main: String = ""
     @State var description: String = ""
     @State var country: String = ""
     @State var city: String = ""
-    @State var icon: String = ""
+    @State var backgroundImage: String = "bg"
+    @State var icon: String = "dunno"
     
     @State private var show = false
     
@@ -27,6 +28,7 @@ struct ContentView: View {
                 icon: icon,
                 country: country,
                 city: city,
+                backgroundImage: backgroundImage,
                 show: $show
             )
             .frame(maxWidth: 860, maxHeight: 600)
