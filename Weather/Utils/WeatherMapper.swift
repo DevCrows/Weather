@@ -8,13 +8,12 @@
 import Foundation
 
 class WeatherMapper {
-    func mapper(type: Int) -> WeatherType {
-        
-        switch type {
-        case 800:
-            return     WeatherType.clearSky
-        default:
-            return WeatherType.clearSky
+    
+    func mapper(mainId: Int) -> WeatherType {
+        switch mainId {
+        case 200: return WeatherType.thunderstormWithLightRain(200, "sdssd")
+        case 201: return WeatherType.thunderstormWithRain(201, "sdssd")
+        default: return WeatherType.thunderstormWithRain(201,"")
         }
     }
 }

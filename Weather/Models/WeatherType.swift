@@ -7,46 +7,59 @@
 
 import Foundation
 
-enum WeatherType: Int {
-    
-    case thunderstormWithLightRain = 200
-    case thunderstormWithRain = 201
-    case thunderstormWithHeavyRain = 202
-    case lightThunderstorm = 210
-    case thunderstorm = 211
-    case heavyThunderstorm = 212
-    case raggedThunderstorm = 221
-    case thunderstormWithLightDrizzle = 230
-    case thunderstormWithDrizzle = 231
-    case thunderstormWithHeavyDrizzle = 232
-    
-    case lightIntensityDrizzle = 300
-    case drizzle = 301
-    case heavyIntensityDrizzle = 302
-    case lightIntensityDrizzleRain = 310
-    case drizzleRain = 311
-    case heavyIntensityDrizzleRain = 312
-    case showerRainAndDrizzle = 313
-    case showerDrizzle = 314
-    
-    case lightRain = 500
-    case moderateRain = 501
-    case heavyIntensityRain = 502
-    case veryHeavyRain = 503
-    case extremeRain = 504
-    case freezingRain = 511
-    case lightIntensityShowerRain = 520
-    case showerRain = 521
-    case heavyIntensityShowerRain = 522
-    case raggedShowerRain = 531
-    
-    case clearSky = 800
-    
-    case fewClouds = 801
-    case scatteredClouds = 802
-    case brokenClouds = 803
-    case overcastClouds = 804
-
-    case snow = 601
-    case mist = 701
+enum WeatherType {
+    case thunderstormWithLightRain (Int, String)
+    case thunderstormWithRain (Int, String)
+    case thunderstormWithHeavyRain (Int, String)
+    case lightThunderstorm (Int, String)
+    case thunderstorm (Int, String)
+    case heavyThunderstorm (Int, String)
+    case raggedThunderstorm (Int, String)
+    case thunderstormWithLightDrizzle (Int, String)
+    case thunderstormWithDrizzle (Int, String)
+    case thunderstormWithHeavyDrizzle (Int, String)
+    case lightIntensityDrizzle (Int, String)
+    case drizzle (Int, String)
+    case heavyIntensityDrizzle (Int, String)
+    case lightIntensityDrizzleRain (Int, String)
+    case drizzleRain (Int, String)
+    case heavyIntensityDrizzleRain (Int, String)
+    case showerRainAndDrizzle (Int, String)
+    case showerDrizzle (Int, String)
+    case lightRain (Int, String)
+    case moderateRain (Int, String)
+    case heavyIntensityRain (Int, String)
+    case veryHeavyRain (Int, String)
+    case extremeRain (Int, String)
+    case freezingRain (Int, String)
+    case lightIntensityShowerRain (Int, String)
+    case showerRain (Int, String)
+    case heavyIntensityShowerRain (Int, String)
+    case raggedShowerRain (Int, String)
+    case lightSnow (Int, String)
+    case snow (Int, String)
+    case heavySnow (Int, String)
+    case sleet (Int, String)
+    case lightShowerSleet (Int, String)
+    case showerSleet (Int, String)
+    case lightRainAndSnow (Int, String)
+    case rainAndSnow (Int, String)
+    case lightShowerSnow (Int, String)
+    case showerSnow (Int, String)
+    case heavyShowerSnow (Int, String)
+    case mist (Int, String)
+    case smoke (Int, String)
+    case haze (Int, String)
+    case dustWhirls (Int, String)
+    case fog (Int, String)
+    case sand (Int, String)
+    case dust (Int, String)
+    case volcanicAsh (Int, String)
+    case squall (Int, String)
+    case tornado (Int, String)
+    case clearSky (Int, String)
+    case fewClouds (Int, String)
+    case scatteredClouds (Int, String)
+    case brokenClouds (Int, String)
+    case overcastClouds (Int, String)
 }
