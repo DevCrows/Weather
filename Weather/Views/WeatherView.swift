@@ -14,26 +14,27 @@ struct WeatherView: View {
     @State var icon: String
     @State var country: String
     @State var city: String
+    @State var backgroundImage: String
     @Binding var show: Bool
     
     var body: some View {
         
         ZStack(alignment: .center){
             
-            Image("bg")
+            Image(backgroundImage)
                 .resizable()
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
-            //.blur(radius: 12)
+                .blur(radius: 2)
             
             Button(action: {
                 self.show = true
             }, label: {
-                    Image(systemName: "gearshape")
-                        .resizable()
-                        .foregroundColor(.secondary)
-                        .frame(width: 28, height: 28)
-                }
+                Image(systemName: "gearshape")
+                    .resizable()
+                    .foregroundColor(.secondary)
+                    .frame(width: 28, height: 28)
+            }
             )
             .buttonStyle(PlainButtonStyle())
             .offset(x:400, y:-270)
@@ -51,10 +52,10 @@ struct WeatherView: View {
                     Text(temp + "°")
                         .font(Font.custom("Avenir-Light", size: 108))
                         .foregroundColor(.white)
-                    Image("wsymbol_0018_cloudy_with_heavy_rain")
+                    Image(icon)
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 80, height: 80, alignment: .center)
+                        .frame(width: 72, height: 72, alignment: .center)
                 }
                 
                 Text(description)
@@ -71,13 +72,8 @@ struct WeatherView: View {
                     description = forecast.weather[0].description
                     city = forecast.name
                     country = forecast.sys.country
-                    
-                    //forecast.weather[0].icon
-                    
-                    let mapper = WeatherMapper().mapper(mainId: 200)
-                    
-                    print(mapper)
-                    
+                    icon = WeatherImageMapper().iconMapper(icon: forecast.weather[0].icon)
+                    backgroundImage = WeatherImageMapper().backgroundMapper(icon: forecast.weather[0].icon)
                 }
             }
         }.frame(maxWidth: 860, maxHeight: 600)
@@ -92,6 +88,7 @@ struct WeatherView_Previews: PreviewProvider {
             icon: "",
             country: "TH",
             city: "Bangkok",
+            backgroundImage: "",
             show: .constant(true)
         ).frame(width: 860, height: 600)
     }

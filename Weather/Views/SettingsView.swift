@@ -20,7 +20,7 @@ struct SettingsView: View {
             }
             Text("this is a text")
         }
-        .frame(maxWidth: 860, maxHeight: 600, alignment: .leading)
+        .frame(maxWidth: 860, maxHeight: 600, alignment: .leading).padding()
     }
 }
 
