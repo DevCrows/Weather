@@ -71,6 +71,13 @@ struct WeatherView: View {
                     description = forecast.weather[0].description
                     city = forecast.name
                     country = forecast.sys.country
+                    
+                    //forecast.weather[0].icon
+                    
+                    let mapper = WeatherMapper().mapper(mainId: 200)
+                    
+                    print(mapper)
+                    
                 }
             }
         }.frame(maxWidth: 860, maxHeight: 600)
