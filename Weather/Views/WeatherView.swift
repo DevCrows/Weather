@@ -19,7 +19,7 @@ struct WeatherView: View {
     
     var body: some View {
         
-        ZStack(alignment: .center){
+        ZStack{
             
             Image(backgroundImage)
                 .resizable()
@@ -34,12 +34,11 @@ struct WeatherView: View {
                     .resizable()
                     .foregroundColor(.secondary)
                     .frame(width: 28, height: 28)
-            }
-            )
+            })
             .buttonStyle(PlainButtonStyle())
             .offset(x:400, y:-270)
             
-            VStack (alignment: .leading){
+            VStack(alignment: .leading){
                 HStack{
                     Text(city + ",")
                         .font(Font.custom("Avenir-Light", size: 32))
@@ -48,7 +47,7 @@ struct WeatherView: View {
                         .font(Font.custom("Avenir-Light", size: 32))
                         .foregroundColor(.white)
                 }
-                HStack(alignment: .center){
+                HStack(alignment: .lastTextBaseline){
                     Text(temp + "°")
                         .font(Font.custom("Avenir-Light", size: 108))
                         .foregroundColor(.white)
@@ -56,18 +55,20 @@ struct WeatherView: View {
                         .resizable()
                         .scaledToFill()
                         .frame(width: 72, height: 72, alignment: .center)
+                    
+                    Divider().frame(width: 10, height: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    DailyForecastView().frame(alignment: .trailing).padding(.leading)
                 }
-                
                 Text(description)
                     .font(Font.custom("Avenir-Light", size: 28))
                     .foregroundColor(.white)
                 
             }
-            .offset(x:-220, y:120)
+            .offset(x:-20, y:80)
             .onAppear(){
                 Api().getWeather{ (forecast) in
-                    var currentTemp = forecast.main.temp
-                    currentTemp = round(currentTemp/10)
+                    
+                    let currentTemp = round(forecast.main.temp/10)
                     temp = String(format: "%.0f", currentTemp)
                     description = forecast.weather[0].description
                     city = forecast.name
