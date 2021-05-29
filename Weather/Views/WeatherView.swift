@@ -20,12 +20,11 @@ struct WeatherView: View {
     var body: some View {
         
         ZStack{
-            
             Image(backgroundImage)
                 .resizable()
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
-                .blur(radius: 2)
+            //.blur(radius: 2)
             
             Button(action: {
                 self.show = true
@@ -55,16 +54,13 @@ struct WeatherView: View {
                         .resizable()
                         .scaledToFill()
                         .frame(width: 72, height: 72, alignment: .center)
-                    
-                    Divider().frame(width: 10, height: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    DailyForecastView().frame(alignment: .trailing).padding(.leading)
                 }
                 Text(description)
                     .font(Font.custom("Avenir-Light", size: 28))
                     .foregroundColor(.white)
                 
             }
-            .offset(x:-20, y:80)
+            .offset(x:-260, y:80)
             .onAppear(){
                 Api().getWeather{ (forecast) in
                     
@@ -77,7 +73,15 @@ struct WeatherView: View {
                     backgroundImage = WeatherImageMapper().backgroundMapper(icon: forecast.weather[0].icon)
                 }
             }
-        }.frame(maxWidth: 860, maxHeight: 600)
+            
+            DailyForecastView()
+                .offset(x:160, y:120)
+            
+        }.frame(
+            minWidth: WINDOW_WIDHT,
+            maxWidth: WINDOW_WIDHT,
+            minHeight: WINDOW_HEIGHT,
+            maxHeight: WINDOW_HEIGHT).fixedSize()
     }
 }
 

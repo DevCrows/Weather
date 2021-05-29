@@ -19,6 +19,7 @@
 		0B9851F226590CEE00569F6C /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9851F126590CEE00569F6C /* Background.swift */; };
 		0B9851F82659717E00569F6C /* WeatherType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9851F72659717E00569F6C /* WeatherType.swift */; };
 		0B9851FB2659776000569F6C /* WeatherMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9851FA2659776000569F6C /* WeatherMapper.swift */; };
+		0BDFA5D726623DD30092F502 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDFA5D626623DD30092F502 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		0B9851F126590CEE00569F6C /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		0B9851F72659717E00569F6C /* WeatherType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherType.swift; sourceTree = "<group>"; };
 		0B9851FA2659776000569F6C /* WeatherMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMapper.swift; sourceTree = "<group>"; };
+		0BDFA5D626623DD30092F502 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				0B9851FA2659776000569F6C /* WeatherMapper.swift */,
+				0BDFA5D626623DD30092F502 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B967C3A2661D35A00DD8AEB /* DailyForecastView.swift in Sources */,
+				0BDFA5D726623DD30092F502 /* Constants.swift in Sources */,
 				0B967C3C2661D3A900DD8AEB /* DailyForecastSingleView.swift in Sources */,
 				0B9851F026590AC700569F6C /* SettingsView.swift in Sources */,
 				0B9851EE2658E41000569F6C /* Weather.swift in Sources */,

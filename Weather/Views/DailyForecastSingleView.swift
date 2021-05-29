@@ -9,8 +9,10 @@ import SwiftUI
 
 struct DailyForecastSingleView: View {
     
-    
-    
+    @State var tempMax: Int
+    @State var tempMin: Int
+    @State var icon: String
+    @State var description: String
     
     var body: some View {
         VStack(alignment: .center){
@@ -19,22 +21,28 @@ struct DailyForecastSingleView: View {
                 Text("Mon")
             }.padding(.top)
             Divider()
-                .frame(width: 80, height: 10, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .frame(width: 90, height: 5)
             HStack{
-                Text("21°").bold()
+                Text(String(tempMax) + "°").bold()
                 Text("/")
-                Text("17°")
+                Text(String(tempMin) + "°")
             }
-            Image("broken_clouds_night")
+            Image(icon)
                 .resizable()
-                .frame(width: 48, height: 48, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            Text("Cloudy").padding(.bottom)
+                .frame(width: 48, height: 48)
+            Text(description)
+                .padding(.bottom)
         }
     }
 }
 
 struct DailyForecastSingleView_Previews: PreviewProvider {
     static var previews: some View {
-        DailyForecastSingleView()
+        DailyForecastSingleView(
+            tempMax: 21,
+            tempMin: 17,
+            icon: "broken_clouds_night",
+            description: "Cloudy"
+        )
     }
 }
