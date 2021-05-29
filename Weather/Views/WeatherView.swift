@@ -19,13 +19,12 @@ struct WeatherView: View {
     
     var body: some View {
         
-        ZStack(alignment: .center){
-            
+        ZStack{
             Image(backgroundImage)
                 .resizable()
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
-                .blur(radius: 2)
+            //.blur(radius: 2)
             
             Button(action: {
                 self.show = true
@@ -34,12 +33,11 @@ struct WeatherView: View {
                     .resizable()
                     .foregroundColor(.secondary)
                     .frame(width: 28, height: 28)
-            }
-            )
+            })
             .buttonStyle(PlainButtonStyle())
             .offset(x:400, y:-270)
             
-            VStack (alignment: .leading){
+            VStack(alignment: .leading){
                 HStack{
                     Text(city + ",")
                         .font(Font.custom("Avenir-Light", size: 32))
@@ -48,7 +46,7 @@ struct WeatherView: View {
                         .font(Font.custom("Avenir-Light", size: 32))
                         .foregroundColor(.white)
                 }
-                HStack(alignment: .center){
+                HStack(alignment: .lastTextBaseline){
                     Text(temp + "°")
                         .font(Font.custom("Avenir-Light", size: 108))
                         .foregroundColor(.white)
@@ -57,17 +55,16 @@ struct WeatherView: View {
                         .scaledToFill()
                         .frame(width: 72, height: 72, alignment: .center)
                 }
-                
                 Text(description)
                     .font(Font.custom("Avenir-Light", size: 28))
                     .foregroundColor(.white)
                 
             }
-            .offset(x:-220, y:120)
+            .offset(x:-260, y:80)
             .onAppear(){
                 Api().getWeather{ (forecast) in
-                    var currentTemp = forecast.main.temp
-                    currentTemp = round(currentTemp/10)
+                    
+                    let currentTemp = round(forecast.main.temp/10)
                     temp = String(format: "%.0f", currentTemp)
                     description = forecast.weather[0].description
                     city = forecast.name
@@ -76,7 +73,15 @@ struct WeatherView: View {
                     backgroundImage = WeatherImageMapper().backgroundMapper(icon: forecast.weather[0].icon)
                 }
             }
-        }.frame(maxWidth: 860, maxHeight: 600)
+            
+            DailyForecastView()
+                .offset(x:160, y:120)
+            
+        }.frame(
+            minWidth: WINDOW_WIDHT,
+            maxWidth: WINDOW_WIDHT,
+            minHeight: WINDOW_HEIGHT,
+            maxHeight: WINDOW_HEIGHT).fixedSize()
     }
 }
 
