@@ -39,8 +39,9 @@ struct Sys: Codable {
 
 let API_KEY: String = "02735b3ab7109f96e982d9a42ae2a22e"
 
-//https://api.openweathermap.org/data/2.5/onecall?q=Bangkok,TH&exclude=daily&appid=02735b3ab7109f96e982d9a42ae2a22e
 
+// https://api.openweathermap.org/data/2.5/forecast?q=Bangkok,TH&exclude=daily&appid=02735b3ab7109f96e982d9a42ae2a22e
+// https://api.openweathermap.org/data/2.5/forecast/daily?q=Bangkok,TH&appid=02735b3ab7109f96e982d9a42ae2a22e
 //https://api.openweathermap.org/data/2.5/weather?id=Bangkok,TH&appid=02735b3ab7109f96e982d9a42ae2a22e
 
 //https://api.openweathermap.org/data/2.5/onecall? lat=33.44&lon=-94.04 &exclude=hourly,daily&appid=02735b3ab7109f96e982d9a42ae2a22e
