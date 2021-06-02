@@ -19,24 +19,7 @@ struct WeatherView: View {
     
     var body: some View {
         
-        ZStack{
-            Image(backgroundImage)
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
-            //.blur(radius: 2)
-            
-            Button(action: {
-                self.show = true
-            }, label: {
-                Image(systemName: "gearshape")
-                    .resizable()
-                    .foregroundColor(.secondary)
-                    .frame(width: 28, height: 28)
-            })
-            .buttonStyle(PlainButtonStyle())
-            .offset(x:400, y:-270)
-            
+        HStack(alignment:.top) {
             VStack(alignment: .leading){
                 HStack{
                     Text(city + ",")
@@ -59,31 +42,62 @@ struct WeatherView: View {
                     .font(Font.custom("Avenir-Light", size: 28))
                     .foregroundColor(.white)
                 
+            }.padding(.leading, 32)
+            ZStack {
+                DailyForecastView()
+                DailyForecastView().padding(.leading, 220)
+//                DailyForecastView().offset(CGSize(width: 120, height: 0))
+//                DailyForecastView().offset(CGSize(width: 240, height: 0))
+//                DailyForecastView().offset(CGSize(width: 0, height: 170))
+//                DailyForecastView()
+//                DailyForecastView()
+//                DailyForecastView()
+            }.background(Color.red)
+           
+                
+            Spacer()
+        }
+        .onAppear(){
+            Api().getWeather{ (forecast) in
+                
+                let currentTemp = round(forecast.main.temp/10)
+                temp = String(format: "%.0f", currentTemp)
+                description = forecast.weather[0].description
+                city = forecast.name
+                country = forecast.sys.country
+                icon = WeatherImageMapper().iconMapper(icon: forecast.weather[0].icon)
+                backgroundImage = WeatherImageMapper().backgroundMapper(icon: forecast.weather[0].icon)
             }
-            .offset(x:-260, y:80)
-            .onAppear(){
-                Api().getWeather{ (forecast) in
-                    
-                    let currentTemp = round(forecast.main.temp/10)
-                    temp = String(format: "%.0f", currentTemp)
-                    description = forecast.weather[0].description
-                    city = forecast.name
-                    country = forecast.sys.country
-                    icon = WeatherImageMapper().iconMapper(icon: forecast.weather[0].icon)
-                    backgroundImage = WeatherImageMapper().backgroundMapper(icon: forecast.weather[0].icon)
-                }
-            }
-            
-            DailyForecastView()
-                .offset(x:160, y:120)
-            
-        }.frame(
-            minWidth: WINDOW_WIDHT,
-            maxWidth: WINDOW_WIDHT,
-            minHeight: WINDOW_HEIGHT,
-            maxHeight: WINDOW_HEIGHT).fixedSize()
+        }
     }
 }
+//        ZStack{
+//            Image(backgroundImage)
+//                .resizable()
+//                .scaledToFill()
+//                .edgesIgnoringSafeArea(.all)
+//            //.blur(radius: 2)
+//
+//            Button(action: {
+//                self.show = true
+//            }, label: {
+//                Image(systemName: "gearshape")
+//                    .resizable()
+//                    .foregroundColor(.secondary)
+//                    .frame(width: 28, height: 28)
+//            })
+//            .buttonStyle(PlainButtonStyle())
+//            .offset(x:400, y:-270)
+            
+           
+            
+//        }.frame(
+//            minWidth: WINDOW_WIDHT,
+//            maxWidth: WINDOW_WIDHT,
+//            minHeight: WINDOW_HEIGHT,
+//            maxHeight: WINDOW_HEIGHT).fixedSize()
+//    }
+//}
 
 struct WeatherView_Previews: PreviewProvider {
     static var previews: some View {
