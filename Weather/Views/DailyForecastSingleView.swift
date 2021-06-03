@@ -9,6 +9,8 @@ import SwiftUI
 
 struct DailyForecastSingleView: View {
     
+    @State var dayOfTheMonth: String
+    @State var dayOfTheWeek: String
     @State var tempMax: Int
     @State var tempMin: Int
     @State var icon: String
@@ -17,11 +19,11 @@ struct DailyForecastSingleView: View {
     var body: some View {
         VStack(alignment: .center){
             HStack{
-                Text("01")
-                Text("Mon")
+                Text(dayOfTheMonth)
+                Text(dayOfTheWeek)
             }.padding(.top)
             Divider()
-                .frame(width: 90, height: 5)
+                .frame(width: 80, height: 5)
             HStack{
                 Text(String(tempMax) + "°").bold()
                 Text("/")
@@ -31,7 +33,7 @@ struct DailyForecastSingleView: View {
                 .resizable()
                 .frame(width: 48, height: 48)
             Text(description)
-                .padding(.bottom)
+                .padding(.bottom,16)
         }
     }
 }
@@ -39,6 +41,8 @@ struct DailyForecastSingleView: View {
 struct DailyForecastSingleView_Previews: PreviewProvider {
     static var previews: some View {
         DailyForecastSingleView(
+            dayOfTheMonth: "1",
+            dayOfTheWeek: "Mon",
             tempMax: 21,
             tempMin: 17,
             icon: "broken_clouds_night",
