@@ -20,7 +20,7 @@ struct WeatherView: View {
     var body: some View {
         
         HStack(alignment:.bottom) {
-            VStack(alignment: .leading){
+            VStack(alignment: .leading, spacing: 1.0){
                 HStack{
                     Text(city + ",")
                         .font(Font.custom("Avenir-Light", size: 32))
@@ -31,7 +31,7 @@ struct WeatherView: View {
                 }
                 HStack(alignment: .lastTextBaseline){
                     Text(temp + "°")
-                        .font(Font.custom("Avenir-Light", size: 108))
+                        .font(Font.custom("Avenir-Light", size: 118))
                         .foregroundColor(.white)
                     Image(icon)
                         .resizable()
@@ -42,13 +42,17 @@ struct WeatherView: View {
                     .font(Font.custom("Avenir-Light", size: 28))
                     .foregroundColor(.white)
                 
-            }.padding(.all, 16)
+            }
+            .padding(.horizontal, 16.0)
             DailyForecastView()
         }
+        .padding(.top,280)
         .frame(width: WINDOW_WIDHT, height: WINDOW_HEIGHT)
         .background(
             Image(backgroundImage)
                 .resizable()
+                .aspectRatio(contentMode: .fill)
+                
         )
         .onAppear(){
             WeatherServiceCurrentDay().getWeather{ (forecast) in
@@ -62,7 +66,7 @@ struct WeatherView: View {
             }
             
             WeatherService5DaysForecast().getForecast{ (forecast5Days) in
-                
+                //forecast5Days.list[0].weather[0].main
             }
         }
     }
@@ -70,13 +74,15 @@ struct WeatherView: View {
 
 struct WeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherView(
-            temp: "23",
-            description: "",
-            icon: "",
-            country: "TH",
-            city: "Bangkok",
-            backgroundImage: "",
-            show: .constant(true))
+        Group {
+            WeatherView(
+                temp: "23",
+                description: "description",
+                icon: "rain_night",
+                country: "TH",
+                city: "Bangkok",
+                backgroundImage: "",
+                show: .constant(true))
+        }
     }
 }
