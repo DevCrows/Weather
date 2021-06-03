@@ -34,7 +34,8 @@ struct DailyForecastSingleView: View {
                 .frame(width: 48, height: 48)
             Text(description)
                 .padding(.bottom,16)
-        }
+                .lineLimit(1)
+        }.frame(width: 80, height: 220, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
     }
 }
 

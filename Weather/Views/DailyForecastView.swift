@@ -17,8 +17,8 @@ struct DailyForecastView: View {
                     dayOfTheWeek: "Mon",
                     tempMax: 21,
                     tempMin: 17,
-                    icon: "",
-                    description: ""
+                    icon: "rain_night",
+                    description: "description"
                 )
             }
         }.background(
