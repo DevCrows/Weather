@@ -19,7 +19,7 @@ struct WeatherView: View {
     
     var body: some View {
         
-        HStack(alignment:.top) {
+        HStack(alignment:.center) {
             VStack(alignment: .leading){
                 HStack{
                     Text(city + ",")
@@ -42,21 +42,14 @@ struct WeatherView: View {
                     .font(Font.custom("Avenir-Light", size: 28))
                     .foregroundColor(.white)
                 
-            }.padding(.leading, 32)
-            ZStack {
-                DailyForecastView()
-                DailyForecastView().padding(.leading, 220)
-//                DailyForecastView().offset(CGSize(width: 120, height: 0))
-//                DailyForecastView().offset(CGSize(width: 240, height: 0))
-//                DailyForecastView().offset(CGSize(width: 0, height: 170))
-//                DailyForecastView()
-//                DailyForecastView()
-//                DailyForecastView()
-            }.background(Color.red)
-           
-                
-            Spacer()
+            }.padding(.all, 16)
+            DailyForecastView()
         }
+        .frame(width: WINDOW_WIDHT, height: WINDOW_HEIGHT)
+        .background(
+            Image(backgroundImage)
+                .resizable()
+        )
         .onAppear(){
             Api().getWeather{ (forecast) in
                 
@@ -71,33 +64,6 @@ struct WeatherView: View {
         }
     }
 }
-//        ZStack{
-//            Image(backgroundImage)
-//                .resizable()
-//                .scaledToFill()
-//                .edgesIgnoringSafeArea(.all)
-//            //.blur(radius: 2)
-//
-//            Button(action: {
-//                self.show = true
-//            }, label: {
-//                Image(systemName: "gearshape")
-//                    .resizable()
-//                    .foregroundColor(.secondary)
-//                    .frame(width: 28, height: 28)
-//            })
-//            .buttonStyle(PlainButtonStyle())
-//            .offset(x:400, y:-270)
-            
-           
-            
-//        }.frame(
-//            minWidth: WINDOW_WIDHT,
-//            maxWidth: WINDOW_WIDHT,
-//            minHeight: WINDOW_HEIGHT,
-//            maxHeight: WINDOW_HEIGHT).fixedSize()
-//    }
-//}
 
 struct WeatherView_Previews: PreviewProvider {
     static var previews: some View {
