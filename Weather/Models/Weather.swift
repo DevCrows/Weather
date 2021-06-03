@@ -39,14 +39,15 @@ struct Sys: Codable {
 
 let API_KEY: String = "02735b3ab7109f96e982d9a42ae2a22e"
 
-//https://api.openweathermap.org/data/2.5/onecall?q=Bangkok,TH&exclude=daily&appid=02735b3ab7109f96e982d9a42ae2a22e
 
+// https://api.openweathermap.org/data/2.5/forecast?q=Bangkok,TH&exclude=daily&appid=02735b3ab7109f96e982d9a42ae2a22e
+// https://api.openweathermap.org/data/2.5/forecast/daily?q=Bangkok,TH&appid=02735b3ab7109f96e982d9a42ae2a22e
 //https://api.openweathermap.org/data/2.5/weather?id=Bangkok,TH&appid=02735b3ab7109f96e982d9a42ae2a22e
 
 //https://api.openweathermap.org/data/2.5/onecall? lat=33.44&lon=-94.04 &exclude=hourly,daily&appid=02735b3ab7109f96e982d9a42ae2a22e
 class Api{
     func getWeather(completion: @escaping (Forecast)->()){
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=Bangkok,TH&appid=" + API_KEY) else { return }
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=Santiago,CL&appid=" + API_KEY) else { return }
         URLSession.shared.dataTask(with: url){ (data, _, _) in
             let forecast = try! JSONDecoder().decode(Forecast.self, from: data!)
             DispatchQueue.main.async {

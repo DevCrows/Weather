@@ -9,19 +9,25 @@ import SwiftUI
 
 struct DailyForecastView: View {
     
+    
+    
     var body: some View {
-            HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/){
+        HStack(alignment: .center){
+            ForEach(1...5, id: \.self){_ in
                 DailyForecastSingleView(
+                    dayOfTheMonth: "01",
+                    dayOfTheWeek: "Mon",
                     tempMax: 21,
                     tempMin: 17,
                     icon: "",
                     description: ""
                 )
-            }.background(
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(Color.black.opacity(0.2))
-                    .shadow(radius: 5)
-            )
+            }
+        }.background(
+            RoundedRectangle(cornerRadius: 8)
+                .fill(Color.black.opacity(0.2))
+                .shadow(radius: 5)
+        )
     }
 }
 
