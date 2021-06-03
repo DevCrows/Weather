@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B0F9D4E2668FDC800F162E3 /* Forecast5Days.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F9D4D2668FDC800F162E3 /* Forecast5Days.swift */; };
 		0B967C3A2661D35A00DD8AEB /* DailyForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B967C392661D35A00DD8AEB /* DailyForecastView.swift */; };
 		0B967C3C2661D3A900DD8AEB /* DailyForecastSingleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B967C3B2661D3A900DD8AEB /* DailyForecastSingleView.swift */; };
 		0B9851D82658B3E000569F6C /* WeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9851D72658B3E000569F6C /* WeatherApp.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B0F9D4D2668FDC800F162E3 /* Forecast5Days.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast5Days.swift; sourceTree = "<group>"; };
 		0B967C392661D35A00DD8AEB /* DailyForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastView.swift; sourceTree = "<group>"; };
 		0B967C3B2661D3A900DD8AEB /* DailyForecastSingleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastSingleView.swift; sourceTree = "<group>"; };
 		0B9851D42658B3E000569F6C /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +111,7 @@
 				0B9851ED2658E41000569F6C /* Weather.swift */,
 				0B9851F126590CEE00569F6C /* Background.swift */,
 				0B9851F72659717E00569F6C /* WeatherType.swift */,
+				0B0F9D4D2668FDC800F162E3 /* Forecast5Days.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				0B9851EE2658E41000569F6C /* Weather.swift in Sources */,
 				0B9851F82659717E00569F6C /* WeatherType.swift in Sources */,
 				0B9851FB2659776000569F6C /* WeatherMapper.swift in Sources */,
+				0B0F9D4E2668FDC800F162E3 /* Forecast5Days.swift in Sources */,
 				0B9851DA2658B3E000569F6C /* ContentView.swift in Sources */,
 				0B9851D82658B3E000569F6C /* WeatherApp.swift in Sources */,
 				0B9851EB2658E3E100569F6C /* WeatherView.swift in Sources */,

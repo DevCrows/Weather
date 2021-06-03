@@ -19,7 +19,7 @@ struct WeatherView: View {
     
     var body: some View {
         
-        HStack(alignment:.center) {
+        HStack(alignment:.bottom) {
             VStack(alignment: .leading){
                 HStack{
                     Text(city + ",")
@@ -51,8 +51,7 @@ struct WeatherView: View {
                 .resizable()
         )
         .onAppear(){
-            Api().getWeather{ (forecast) in
-                
+            WeatherServiceCurrentDay().getWeather{ (forecast) in
                 let currentTemp = round(forecast.main.temp/10)
                 temp = String(format: "%.0f", currentTemp)
                 description = forecast.weather[0].description
@@ -61,6 +60,10 @@ struct WeatherView: View {
                 icon = WeatherImageMapper().iconMapper(icon: forecast.weather[0].icon)
                 backgroundImage = WeatherImageMapper().backgroundMapper(icon: forecast.weather[0].icon)
             }
+            
+            WeatherService5DaysForecast().getForecast{ (forecast5Days) in
+                
+            }
         }
     }
 }
@@ -68,13 +71,12 @@ struct WeatherView: View {
 struct WeatherView_Previews: PreviewProvider {
     static var previews: some View {
         WeatherView(
-            temp: "21",
-            description: "String",
+            temp: "23",
+            description: "",
             icon: "",
             country: "TH",
             city: "Bangkok",
             backgroundImage: "",
-            show: .constant(true)
-        ).frame(width: 860, height: 600)
+            show: .constant(true))
     }
 }
