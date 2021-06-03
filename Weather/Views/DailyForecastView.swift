@@ -9,8 +9,6 @@ import SwiftUI
 
 struct DailyForecastView: View {
     
-    
-    
     var body: some View {
         HStack(alignment: .center){
             ForEach(1...5, id: \.self){_ in
@@ -36,3 +34,4 @@ struct DailyForecastView_Previews: PreviewProvider {
         DailyForecastView()
     }
 }
+

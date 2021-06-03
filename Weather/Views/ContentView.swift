@@ -15,6 +15,7 @@ struct ContentView: View {
     @State var country: String = ""
     @State var city: String = ""
     @State var backgroundImage: String = "bg"
+    @State var fiveDays: Forecast5Days? = nil
     @State var icon: String = "dunno"
     
     @State private var show = false
@@ -31,14 +32,18 @@ struct ContentView: View {
                 backgroundImage: backgroundImage,
                 show: $show
             )
-            .frame(maxWidth: 860, maxHeight: 600)
-            .transition(AnyTransition.move(edge: .leading)).animation(.easeInOut)
+            .frame(width: WINDOW_WIDHT, height: WINDOW_HEIGHT)
+            .transition(
+                AnyTransition.move(edge: .leading)
+            ).animation(.easeInOut)
         }
         
         if show {
             SettingsView(show: $show)
-                .frame(maxWidth: 860, maxHeight: 600)
-                .transition(AnyTransition.move(edge: .leading)).animation(.easeInOut)
+                .frame(width: WINDOW_WIDHT, height: WINDOW_HEIGHT)
+                .transition(
+                    AnyTransition.move(edge: .leading)
+                ).animation(.easeInOut)
         }
     }
 }
