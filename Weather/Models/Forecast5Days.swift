@@ -8,10 +8,6 @@
 import Foundation
 
 struct Forecast5Days: Decodable {
-    var city: City?
-    var cod: String
-    var message: Double
-    var cnt: Int
     var list: [ForecastDay]
 }
 
@@ -22,7 +18,7 @@ struct City: Codable {
     var timezone: Int?
 }
 
-struct ForecastDay: Codable  {
+struct ForecastDay: Codable {
     var dt: Int
     var sunrise: Int
     var sunset: Int
@@ -54,4 +50,4 @@ class WeatherService5DaysForecast{
         }.resume()
     }
 }
- 
+

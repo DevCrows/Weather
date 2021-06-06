@@ -15,6 +15,8 @@ struct WeatherView: View {
     @State var country: String
     @State var city: String
     @State var backgroundImage: String
+    @State var fiveDaysForecast = [ForecastDay]()
+
     @Binding var show: Bool
     
     var body: some View {
@@ -44,7 +46,9 @@ struct WeatherView: View {
                 
             }
             .padding(.horizontal, 16.0)
-            DailyForecastView()
+            DailyForecastView(
+                fiveDaysForecast: fiveDaysForecast
+            )
         }
         .padding(.top,280)
         .frame(width: WINDOW_WIDHT, height: WINDOW_HEIGHT)
@@ -66,7 +70,7 @@ struct WeatherView: View {
             }
             
             WeatherService5DaysForecast().getForecast{ (forecast5Days) in
-                //forecast5Days.list[0].weather[0].main
+                fiveDaysForecast = forecast5Days.list
             }
         }
     }
@@ -75,6 +79,8 @@ struct WeatherView: View {
 struct WeatherView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
+            
+            let emptyArray = [ForecastDay]()
             WeatherView(
                 temp: "23",
                 description: "description",
@@ -82,6 +88,7 @@ struct WeatherView_Previews: PreviewProvider {
                 country: "TH",
                 city: "Bangkok",
                 backgroundImage: "",
+                fiveDaysForecast: emptyArray,
                 show: .constant(true))
         }
     }

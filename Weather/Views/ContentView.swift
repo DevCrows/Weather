@@ -15,8 +15,8 @@ struct ContentView: View {
     @State var country: String = ""
     @State var city: String = ""
     @State var backgroundImage: String = "bg"
-    @State var fiveDays: Forecast5Days? = nil
     @State var icon: String = "dunno"
+    @State var fiveDaysForecast = [ForecastDay]()
     
     @State private var show = false
     
@@ -30,6 +30,7 @@ struct ContentView: View {
                 country: country,
                 city: city,
                 backgroundImage: backgroundImage,
+                fiveDaysForecast: fiveDaysForecast,
                 show: $show
             )
             .frame(width: WINDOW_WIDHT, height: WINDOW_HEIGHT)
