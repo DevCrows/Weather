@@ -9,13 +9,18 @@ import SwiftUI
 
 struct DailyForecastView: View {
     
+    @State var fiveDaysForecast: [ForecastDay]
+    
     var body: some View {
+    
         HStack(alignment: .center){
-            ForEach(1...5, id: \.self){_ in
+            
+            ForEach(0 ..< fiveDaysForecast.count) {_ in
+            
                 DailyForecastSingleView(
-                    dayOfTheMonth: "01",
+                    dayOfTheMonth: "21",
                     dayOfTheWeek: "Mon",
-                    tempMax: 21,
+                    tempMax: self.fiveDaysForecast[0].dt,
                     tempMin: 17,
                     icon: "rain_night",
                     description: "description"
@@ -31,7 +36,12 @@ struct DailyForecastView: View {
 
 struct DailyForecastView_Previews: PreviewProvider {
     static var previews: some View {
-        DailyForecastView()
+        
+        let emptyArray = [ForecastDay]()
+        
+        DailyForecastView(
+            fiveDaysForecast: emptyArray
+        )
     }
 }
 
